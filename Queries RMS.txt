@@ -1,0 +1,160 @@
+CREATE TABLE [Customers] (
+  [Customers_ID] int,
+  [Name] nvarchar,
+  [Email] nvarchar,
+  [Phone Number] nvarchar,
+  [Password] nvarchar,
+  PRIMARY KEY ([Customers_ID])
+);
+
+CREATE INDEX [UK] ON  [Customers] ([Email], [Phone Number]);
+
+CREATE TABLE [Foods] (
+  [Food ID] int	,
+  [Category ID] int,
+  [Food Name] nvarchar,
+  [Food Price] int,
+  PRIMARY KEY ([Food ID])
+);
+
+CREATE INDEX [FK] ON  [Foods] ([Category ID]);
+
+CREATE INDEX [UK] ON  [Foods] ([Food Name]);
+
+CREATE TABLE [Categories] (
+  [Category ID] int,
+  [Category Name] nvarchar,
+  PRIMARY KEY ([Category ID])
+);
+
+CREATE INDEX [FK] ON  [Categories] ([Category Name]);
+
+CREATE TABLE [Expenses] (
+  [Expenses ID] int,
+  [Expense Type] nvarchar,
+  [Month of Expense] nvarchar,
+  [Paying Date] datetime,
+  [Amount] int,
+  PRIMARY KEY ([Expenses ID])
+);
+
+CREATE INDEX [UK] ON  [Expenses] ([Expense Type]);
+
+CREATE TABLE [Orders] (
+  [Date] datetime,
+  [Orders ID] int,
+  [Customers ID] int,
+  [Table No.] int,
+  [Emp/Cashier ID] int,
+  [Emp/Waiter ID] int,
+  [Food ID] int,
+  [Event Order ID] int,
+  [Taxes] int,
+  PRIMARY KEY ([Orders ID])
+);
+
+CREATE INDEX [FK] ON  [Orders] ([Customers ID], [Table No.], [Emp/Cashier ID], [Emp/Waiter ID], [Food ID], [Event Order ID]);
+
+CREATE TABLE [Tables] (
+  [Table ID] int,
+  [Table No.] int,
+  [Table Res. ID] int,
+  PRIMARY KEY ([Table ID])
+);
+
+CREATE INDEX [FK] ON  [Tables] ([Table Res. ID]);
+
+CREATE TABLE [Designations] (
+  [Designation ID] int,
+  [Designation Name] nvarchar,
+  PRIMARY KEY ([Designation ID])
+);
+
+CREATE INDEX [UK] ON  [Designations] ([Designation Name]);
+
+
+
+CREATE TABLE [Table Reservations] (
+  [Table Reservation ID] int,
+  [Customers ID] int,
+  [Table ID] int,
+  [EmployeeID/Cashier] int,
+  [Date] datetime,
+  PRIMARY KEY ([Table Reservation ID])
+);
+
+CREATE INDEX [FK] ON  [Table Reservations] ([Customers ID], [Table ID], [EmployeeID/Cashier]);
+
+CREATE TABLE [Employees] (
+  [Employee ID] int,
+  [Employee Name] nvarchar,
+  [Phone No] nvarchar,
+  [Designation ID] int,
+  [Password] nvarchar,
+  PRIMARY KEY ([Employee ID])
+);
+
+CREATE INDEX [UK] ON  [Employees] ([Phone No]);
+
+CREATE INDEX [FK] ON  [Employees] ([Designation ID]);
+
+CREATE TABLE [Events Orders] (
+  [Event Orders ID] int,
+  [Type] nvarchar,
+  [Charges] int,
+  PRIMARY KEY ([Event Orders ID])
+);
+
+CREATE INDEX [UK] ON  [Events Orders] ([Type]);
+
+CREATE TABLE [Allowances] (
+  [Allowances ID] int,
+  [Allowance Name] nvarchar,
+  [Amount] int,
+  PRIMARY KEY ([Allowances ID])
+);
+
+CREATE INDEX [UK] ON  [Allowances] ([Allowance Name]);
+
+CREATE TABLE [Salaries] (
+  [Salary ID] int,
+  [Employee ID] int,
+  [Allowances ID] int,
+  [Salary] int,
+  PRIMARY KEY ([Salary ID])
+);
+
+CREATE INDEX [FK] ON  [Salaries] ([Employee ID], [Allowances ID]);
+
+CREATE TABLE [Salaries Transaction] (
+  [Salary Transaction ID] int,
+  [Employee ID] int,
+  [Paying Date] datetime,
+  [Salary Month] nvarchar,
+  [Amount] int,
+  PRIMARY KEY ([Salary Transaction ID])
+);
+
+CREATE INDEX [FK] ON  [Salaries Transaction] ([Employee ID]);
+
+CREATE TABLE [Attendance] (
+  [Attendance ID] int,
+  [Date] datetime,
+  [Employee ID] time,
+  [Present/Absent] int,
+  PRIMARY KEY ([Attendance ID])
+);
+
+CREATE INDEX [FK] ON  [Attendance] ([Employee ID]);
+
+SELECT * FROM Allowances
+SELECT * FROM Categories
+SELECT * FROM Customers
+SELECT * FROM Designations
+SELECT * FROM Employees
+SELECT * FROM [Events Orders]
+SELECT * FROM Expenses
+SELECT * FROM Foods
+SELECT * FROM Orders
+SELECT * FROM [Table Reservations]
+SELECT * FROM Tables

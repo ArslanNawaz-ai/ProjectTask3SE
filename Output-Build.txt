@@ -1,0 +1,3 @@
+﻿1>------ Build started: Project: ERMS, Configuration: Debug Any CPU ------
+1>  ERMS -> C:\Users\Khalil\Downloads\OOAD Project\ERMS\ERMS\bin\ERMS.dll
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
